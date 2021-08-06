@@ -6,10 +6,10 @@ export const GET_USER = gql`
             _id
             username
             email
-            bookCount
-            savedBooks {
-                bookId
-                authors
+            drinkCount
+            savedDrinks {
+                drinkId
+                ingredients
                 image
                 description
                 title
