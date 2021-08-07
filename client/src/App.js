@@ -5,8 +5,8 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 import Navbar from './components/Navbar';
-import SearchBooks from './pages/SearchBooks';
-import SavedBooks from './pages/SavedBooks';
+import SearchDrinks from './pages/SearchDrinks';
+import SavedDrinks from './pages/SavedDrinks';
 
 const client = new ApolloClient({
   request: operation => {
@@ -28,8 +28,8 @@ function App() {
        <>
           <Navbar/>
           <Switch>
-            <Route exact path='/' component={SearchBooks} />
-            <Route exact path='/saved' component={SavedBooks} />
+            <Route exact path='/' component={SearchDrinks} />
+            <Route exact path='/saved' component={SavedDrinks} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
         </>

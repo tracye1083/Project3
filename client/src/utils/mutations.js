@@ -8,12 +8,12 @@ export const ADD_USER = gql`
                     _id
                     username
                     email
-                    bookCount
-                    savedBooks {
-                        bookId
+                    drinkCount
+                    savedDriks {
+                        drinkId
                         title
                         description
-                        authors
+                        ingredients
                         image
                         link
                     }
@@ -30,12 +30,12 @@ export const LOGIN_USER = gql`
                     _id
                     username
                     email
-                    bookCount
-                    savedBooks {
-                        bookId
+                    drinkCount
+                    savedDrinks {
+                        drinkId
                         title
                         description
-                        authors
+                        ingredients
                         link
                         image
                     }
@@ -44,15 +44,15 @@ export const LOGIN_USER = gql`
     }
 `;
 
-export const SAVE_BOOK = gql`
-    mutation saveBook($input: bookInput!) {
-        saveBook(input: $input) {
+export const SAVE_DRINK = gql`
+    mutation saveDrink($input: drinkInput!) {
+        saveDrink(input: $input) {
             _id
             username
             email
-            savedBooks {
-                bookId
-                authors
+            savedDrinks {
+                drinkId
+                ingredients
                 image
                 description
                 title
@@ -62,16 +62,16 @@ export const SAVE_BOOK = gql`
     }
 `;
 
-export const REMOVE_BOOK = gql`
+export const REMOVE_DRINK = gql`
     mutation removeBook($bookId: String!) {
         removeBook(bookId: $bookId) {
             _id
             username
             email
-            bookCount
-            savedBooks {
-                bookId
-                authors
+            drinkCount
+            savedDrinks {
+                drinkId
+                ingredients
                 image
                 description
                 title
