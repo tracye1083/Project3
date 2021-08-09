@@ -7,7 +7,7 @@ const typeDefs = gql`
         ingredients: [String]
         description: String
         image: String
-        title: String
+        name: String
         link: String
     }
 
@@ -28,6 +28,7 @@ const typeDefs = gql`
     }
     type Query {
         me: User
+        drinks: [Drink]
     }
     type Auth {
         token: ID

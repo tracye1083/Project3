@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const drinkSchema = new Schema({
   name: {
@@ -10,14 +10,14 @@ const drinkSchema = new Schema({
     required: true,
   },
   ingredients: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Ingredient"
-    },
+    String
+    // {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Ingredient"
+    // },
   ],
   instructions: {
     type: String,
-    required: true,
   },
   // saved book id from GoogleBooks
   // drinkId: {
@@ -29,6 +29,6 @@ const drinkSchema = new Schema({
   },
 });
 
-const Drink = mongoose.model("Drink", drinkSchema)
+const Drink = model('Drink', drinkSchema)
 
 module.exports = Drink;
