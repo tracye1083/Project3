@@ -1,4 +1,4 @@
-const {  User, Book } =  require('../models');
+const {  User, Drink } =  require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -12,7 +12,10 @@ const resolvers = {
             }
 
             throw new AuthenticationError('Not logged in');
-        }
+        },
+        drinks: async () => {
+            return await Drink.find({});
+            }
     },
 
     Mutation: {

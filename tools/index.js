@@ -52,6 +52,9 @@ const writeFile = async (fileName, dataToWrite) => {
   })
 }
 
+function getCocktails() {
+  writeFile('cocktails.json', completeList)
+}
 function getIngredients() {
   for (let i = 0; i < completeList.length; i++) {
     ingredientsList = ingredientsList.concat(completeList[i].ingredients);
@@ -70,10 +73,10 @@ function getMeasures() {
   measuresList = _.uniq(measuresList);
   console.log("LIST OF ALL UNIQUE INGREDIENTS");
   console.log(measuresList);
-  writeFile("measusres.json", measuresList)
+  writeFile("measures.json", measuresList)
 }
 
 
-
+getCocktails();
 getIngredients();
 getMeasures()
