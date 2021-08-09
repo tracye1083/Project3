@@ -5,10 +5,10 @@ const typeDefs = gql`
     type Drink {
         drinkId: String
         ingredients: [String]
-        description: String
-        image: String
+        glass: String
+        instructions: String
         name: String
-        link: String
+        image: String
     }
 
     type User {
