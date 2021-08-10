@@ -9,13 +9,13 @@ export const ADD_USER = gql`
                     username
                     email
                     drinkCount
-                    savedDriks {
+                    savedDrinks {
                         drinkId
-                        title
-                        description
                         ingredients
+                        glass
+                        instructions
+                        name
                         image
-                        link
                     }
                 }
         }
@@ -33,10 +33,10 @@ export const LOGIN_USER = gql`
                     drinkCount
                     savedDrinks {
                         drinkId
-                        title
-                        description
                         ingredients
-                        link
+                        glass
+                        instructions
+                        name
                         image
                     }
                 }
@@ -53,10 +53,10 @@ export const SAVE_DRINK = gql`
             savedDrinks {
                 drinkId
                 ingredients
+                glass
+                instructions
+                name
                 image
-                description
-                title
-                link
             }
         }
     }
@@ -72,10 +72,10 @@ export const REMOVE_DRINK = gql`
             savedDrinks {
                 drinkId
                 ingredients
+                glass
+                instructions
+                name
                 image
-                description
-                title
-                link
             }
         }
     }

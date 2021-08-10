@@ -10,11 +10,23 @@ export const GET_USER = gql`
             savedDrinks {
                 drinkId
                 ingredients
+                glass
+                instructions
+                name
                 image
-                description
-                title
-                link
             }
         }
     }
 `;
+
+export const GET_DRINK = gql`
+    {
+        drinks {
+            drinkId
+            ingredients
+            glass
+            instructions
+            name
+            image
+        }
+    }`
