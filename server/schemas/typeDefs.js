@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
 
     type Drink {
-        drinkId: String
+        _id: ID
         ingredients: [String]
         glass: String
         instructions: String
