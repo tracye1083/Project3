@@ -1,147 +1,154 @@
-import React, {useState, useEffect} from 'react';
-import Auth from '../utils/auth';
-import {Jumbotron, Container, Col, Form, Button, Card, CardColumns} from 'react-bootstrap';
-// import {searchGoogleBooks} from '../utils/API';
-import {saveDrinkIds, getSavedDrinkIds} from '../utils/localStorage';
-import {SAVE_DRINK} from '../utils/mutations';
-import {useMutation} from '@apollo/react-hooks';
+//New code here: 
 
-const SearchDrinks = () => {
-  const [saveDrink, {error}] = useMutation(SAVE_DRINK);
-  // create state for holding returned google api data
-  const [searchedDrinks, setSearchedDrinks] = useState([]);
-  // create state for holding our search field data
-  const [searchInput, setSearchInput] = useState('');
 
-  // create state to hold saved bookId values
-  const [savedDrinkIds, setSavedDrinkIds] = useState(getSavedDrinkIds());
 
-  // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
-  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
-  useEffect(() => {
-    return () => saveDrinkIds(savedDrinkIds);
-  });
 
-  // create method to search for books and set state on form submit
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
 
-    if (!searchInput) {
-      return false;
-    }
 
-    try {
-      const response = await searchDrinksAPI(searchInput);
+// import React, {useState, useEffect} from 'react';
+// import Auth from '../utils/auth';
+// import {Jumbotron, Container, Col, Form, Button, Card, CardColumns} from 'react-bootstrap';
+// // import {searchGoogleBooks} from '../utils/API';
+// import {saveDrinkIds, getSavedDrinkIds} from '../utils/localStorage';
+// import {SAVE_DRINK} from '../utils/mutations';
+// import {useMutation} from '@apollo/react-hooks';
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+// const SearchDrinks = () => {
+//   const [saveDrink, {error}] = useMutation(SAVE_DRINK);
+//   // create state for holding returned google api data
+//   const [searchedDrinks, setSearchedDrinks] = useState([]);
+//   // create state for holding our search field data
+//   const [searchInput, setSearchInput] = useState('');
 
-      const { items } = await response.json();
+//   // create state to hold saved bookId values
+//   const [savedDrinkIds, setSavedDrinkIds] = useState(getSavedDrinkIds());
 
-      const drinkData = items.map((drink) => ({
-        drinkId: drink.id,
-        ingredients: drink.ingredients || ['No ingredients to display'],
-        title: drink.title,
-        description: drink.description,
-        image: drink.volumeInfo.imageLinks?.thumbnail || '',
-      }));
+//   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
+//   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
+//   useEffect(() => {
+//     return () => saveDrinkIds(savedDrinkIds);
+//   });
 
-      setSearchedDrinks(drinkData);
-      setSearchInput('');
-    } catch (err) {
-      console.error(err);
-    }
-  };
+//   // create method to search for books and set state on form submit
+//   const handleFormSubmit = async (event) => {
+//     event.preventDefault();
 
-  // create function to handle saving a book to our database
-  const handleSaveDrink = async (drinkId) => {
-    const drinkToSave = searchedDrinks.find((drink) => drink.drinkId === drinkId);
+//     if (!searchInput) {
+//       return false;
+//     }
 
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+//     try {
+//       const response = await searchDrinksAPI(searchInput);
 
-    if (!token) {
-      return false;
-    }
+//       if (!response.ok) {
+//         throw new Error('something went wrong!');
+//       }
 
-    try {
-      const {data} = await saveDrink({
-        variables: {input: drinkToSave}
-      });
+//       const { items } = await response.json();
 
-      if(error) {
-        throw new Error('Something went wrong!');
-      }
+//       const drinkData = items.map((drink) => ({
+//         drinkId: drink.id,
+//         ingredients: drink.ingredients || ['No ingredients to display'],
+//         title: drink.title,
+//         description: drink.description,
+//         image: drink.volumeInfo.imageLinks?.thumbnail || '',
+//       }));
 
-      setSavedDrinkIds([...savedDrinkIds, drinkToSave.drinkId]);
-    }
-     catch (err) {
-      console.error(err);
-    }
-  };
+//       setSearchedDrinks(drinkData);
+//       setSearchInput('');
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
 
-  return (
-    <>
-      <Jumbotron fluid className='text-light bg-dark'>
-        <Container>
-          <h1>Search for Drinks!</h1>
-          <Form onSubmit={handleFormSubmit}>
-            <Form.Row>
-              <Col xs={12} md={8}>
-                <Form.Control
-                  name='searchInput'
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  type='text'
-                  size='lg'
-                  placeholder='Search for a drink'
-                />
-              </Col>
-              <Col xs={12} md={4}>
-                <Button type='submit' variant='success' size='lg'>
-                  Submit Search
-                </Button>
-              </Col>
-            </Form.Row>
-          </Form>
-        </Container>
-      </Jumbotron>
+//   // create function to handle saving a book to our database
+//   const handleSaveDrink = async (drinkId) => {
+//     const drinkToSave = searchedDrinks.find((drink) => drink.drinkId === drinkId);
 
-      <Container>
-        <h2>
-          {searchedDrinks.length
-            ? `Viewing ${searchedDrinks.length} results:`
-            : 'Search for a drink to begin'}
-        </h2>
-        <CardColumns>
-          {searchedDrinks.map((book) => {
-            return (
-              <Card key={drink.drinkId} border='dark'>
-                {drink.image ? (
-                  <Card.Img src={drink.image} alt={`The cover for ${drink.title}`} variant='top' />
-                ) : null}
-                <Card.Body>
-                  <Card.Title>{drink.title}</Card.Title>
-                  <p className='small'>Ingredients: {drink.ingredients}</p>
-                  <Card.Text>{drink.description}</Card.Text>
-                  {Auth.loggedIn() && (
-                    <Button
-                      disabled={savedDrinkIds?.some((savedDrinkId) => savedDrinkId === drink.drinkId)}
-                      className='btn-block btn-info'
-                      onClick={() => handleSaveDrink(drink.drinkId)}>
-                      {savedDrinkIds?.some((savedDrinkId) => savedDrinkId === drink.drinkId)
-                        ? 'This drink has already been saved!'
-                        : 'Save this Drink!'}
-                    </Button>
-                  )}
-                </Card.Body>
-              </Card>
-            );
-          })}
-        </CardColumns>
-      </Container>
-    </>
-  );
-};
+//     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-export default SearchDrinks;
+//     if (!token) {
+//       return false;
+//     }
+
+//     try {
+//       const {data} = await saveDrink({
+//         variables: {input: drinkToSave}
+//       });
+
+//       if(error) {
+//         throw new Error('Something went wrong!');
+//       }
+
+//       setSavedDrinkIds([...savedDrinkIds, drinkToSave.drinkId]);
+//     }
+//      catch (err) {
+//       console.error(err);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <Jumbotron fluid className='text-light bg-dark'>
+//         <Container>
+//           <h1>Search for Drinks!</h1>
+//           <Form onSubmit={handleFormSubmit}>
+//             <Form.Row>
+//               <Col xs={12} md={8}>
+//                 <Form.Control
+//                   name='searchInput'
+//                   value={searchInput}
+//                   onChange={(e) => setSearchInput(e.target.value)}
+//                   type='text'
+//                   size='lg'
+//                   placeholder='Search for a drink'
+//                 />
+//               </Col>
+//               <Col xs={12} md={4}>
+//                 <Button type='submit' variant='success' size='lg'>
+//                   Submit Search
+//                 </Button>
+//               </Col>
+//             </Form.Row>
+//           </Form>
+//         </Container>
+//       </Jumbotron>
+
+//       <Container>
+//         <h2>
+//           {searchedDrinks.length
+//             ? `Viewing ${searchedDrinks.length} results:`
+//             : 'Search for a drink to begin'}
+//         </h2>
+//         <CardColumns>
+//           {searchedDrinks.map((book) => {
+//             return (
+//               <Card key={drink.drinkId} border='dark'>
+//                 {drink.image ? (
+//                   <Card.Img src={drink.image} alt={`The cover for ${drink.title}`} variant='top' />
+//                 ) : null}
+//                 <Card.Body>
+//                   <Card.Title>{drink.title}</Card.Title>
+//                   <p className='small'>Ingredients: {drink.ingredients}</p>
+//                   <Card.Text>{drink.description}</Card.Text>
+//                   {Auth.loggedIn() && (
+//                     <Button
+//                       disabled={savedDrinkIds?.some((savedDrinkId) => savedDrinkId === drink.drinkId)}
+//                       className='btn-block btn-info'
+//                       onClick={() => handleSaveDrink(drink.drinkId)}>
+//                       {savedDrinkIds?.some((savedDrinkId) => savedDrinkId === drink.drinkId)
+//                         ? 'This drink has already been saved!'
+//                         : 'Save this Drink!'}
+//                     </Button>
+//                   )}
+//                 </Card.Body>
+//               </Card>
+//             );
+//           })}
+//         </CardColumns>
+//       </Container>
+//     </>
+//   );
+// };
+
+// export default SearchDrinks;
