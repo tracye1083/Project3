@@ -27,6 +27,9 @@ const drinkSchema = new Schema({
   image: {
     type: String,
   },
+  measure: {
+    type: [String],
+  },
 });
 
 const Drink = model('Drink', drinkSchema)

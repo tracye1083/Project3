@@ -8,6 +8,7 @@ const typeDefs = gql`
         glass: String
         instructions: String
         name: String
+        measure: [String]!
         image: String
     }
 
