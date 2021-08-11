@@ -1,4 +1,4 @@
-const {  User, Drink } =  require('../models');
+const {  User, Drink, Ingredient } =  require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -15,9 +15,19 @@ const resolvers = {
         },
         drinks: async () => {
             return await Drink.find({});
-            }
-    },
+            },
 
+        ingredients: async () => {
+            return await Ingredient.find({});
+        },
+
+        drinkByIngredient: async (parent, args) => {
+            console.log(args)
+            console.log(args.ingredient)
+            return await Drink.find({ingredients: args.ingredient})
+        },
+    },
+    
     Mutation: {
 
         login: async (parent, { email, password }) => {
