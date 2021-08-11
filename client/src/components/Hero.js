@@ -1,11 +1,22 @@
 import React from 'react';
+
 import { FloatingLabel, Form, Row, Container, Button } from 'react-bootstrap';
-
-
-
+import { GET_DRINK_BY_INGREDIENT } from '../utils/queries';
+import { useQuery } from '@apollo/client';
 
 
 const Hero = () => {
+  
+  const { loading, data } = useQuery(GET_DRINK_BY_INGREDIENT);
+  const drinkData = data?.drinkByIngredient || [];
+
+
+
+
+
+
+
+
   return (
       
     <div className='hero'>
@@ -13,7 +24,7 @@ const Hero = () => {
     <Row className="g-2">
     
       <FloatingLabel controlId="floatingInputGrid" label="Search by Cocktail">
-        <Form.Control className='userInput' type="input" placeholder="name@example.com" />
+        <Form.Control className='userInput' type="input" placeholder="Gin" />
       </FloatingLabel>
     
       <FloatingLabel controlId="floatingSelectGrid" label="Search by Ingredients">
