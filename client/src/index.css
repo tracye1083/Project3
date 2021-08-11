@@ -16,12 +16,21 @@ h6 {
   font-style: italic;
 }
 
-
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .5;
+  }
+}
 
 .hero {
+  animation-name: fadeIn;
+  animation-duration: 5s;
   background-image: url(components/images/cocktails.jpg);
   width: 100%;
-  height: 100%;
+  height: 94%;
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.5;
@@ -32,3 +41,19 @@ h6 {
   width: 100%;;
   background: black;
 }
+
+.g-2 {
+  margin-top: 7%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: 25vh;
+  
+}
+
+.userInput {
+  text-align: center;
+}
+
