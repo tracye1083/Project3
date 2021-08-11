@@ -1,6 +1,6 @@
 // route to get logged in user's info (needs the token)
 export const getMe = (token) => {
-  return fetch('/api/users/me', {
+  return fetch('/graphql/users/me', {
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
@@ -9,7 +9,7 @@ export const getMe = (token) => {
 };
 
 export const createUser = (userData) => {
-  return fetch('/api/users', {
+  return fetch('/graphql/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ export const createUser = (userData) => {
 };
 
 export const loginUser = (userData) => {
-  return fetch('/api/users/login', {
+  return fetch('/graphql/users/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -28,9 +28,9 @@ export const loginUser = (userData) => {
   });
 };
 
-// save book data for a logged in user
+// save drink data for a logged in user
 export const saveDrink = (drinkData, token) => {
-  return fetch('/api/users', {
+  return fetch('/graphql/users', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -40,9 +40,9 @@ export const saveDrink = (drinkData, token) => {
   });
 };
 
-// remove saved book data for a logged in user
+// remove saved drink data for a logged in user
 export const deleteDrink = (drinkId, token) => {
-  return fetch(`/api/users/drinks/${drinkId}`, {
+  return fetch(`/graphql/users/drinks/${drinkId}`, {
     method: 'DELETE',
     headers: {
       authorization: `Bearer ${token}`,

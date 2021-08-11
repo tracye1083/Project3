@@ -57,3 +57,19 @@ h6 {
   text-align: center;
 }
 
+.searchResults {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 60vh;
+}
+
+.submitContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.submit {
+  width: 15rem;
+}

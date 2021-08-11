@@ -1,8 +1,11 @@
 import React from 'react';
-import { FloatingLabel, Form, Row, Container } from 'react-bootstrap';
+import { FloatingLabel, Form, Row, Container, Button } from 'react-bootstrap';
 
 
-function Hero() {
+
+
+
+const Hero = () => {
   return (
       
     <div className='hero'>
@@ -24,7 +27,20 @@ function Hero() {
    
     </Row>
     </Container>
+
+    <Form className='submitContainer'>
+      <Button as="input" type="submit" value="Submit" className='submit' />{' '}
+    </Form>
+    
+
+    <Container className='searchResults' id='searchResults' >
+      <div id='card'></div>
+    </Container>
+
+
     </div>
+
+  
     
   );
 }

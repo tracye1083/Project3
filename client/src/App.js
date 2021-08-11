@@ -27,6 +27,7 @@ function App() {
       <Router>
           <Navbar/>
           <Hero/>
+          
       </Router>
     </ApolloProvider>
   );
