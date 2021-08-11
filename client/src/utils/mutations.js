@@ -8,15 +8,6 @@ export const ADD_USER = gql`
                     _id
                     username
                     email
-                    drinkCount
-                    savedDrinks {
-                        drinkId
-                        ingredients
-                        glass
-                        instructions
-                        name
-                        image
-                    }
                 }
         }
     }

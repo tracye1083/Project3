@@ -1,4 +1,4 @@
-// //New code here: 
+// // //New code here: 
 
 // import React, {useState, useEffect} from 'react';
 // import Auth from '../utils/auth';
@@ -88,30 +88,30 @@
 
 //   return (
 //     <>
-    //   <div fluid className='text-light bg-dark'>
-    //     <Container>
-    //       <h1>Search for Drinks!</h1>
-    //       <Form onSubmit={handleFormSubmit}>
-    //         <Form.Row>
-    //           <Col xs={12} md={8}>
-    //             <Form.Control
-    //               name='searchInput'
-    //               value={searchInput}
-    //               onChange={(e) => setSearchInput(e.target.value)}
-    //               type='text'
-    //               size='lg'
-    //               placeholder='Search for a drink'
-    //             />
-    //           </Col>
-    //           <Col xs={12} md={4}>
-    //             <Button type='submit' variant='success' size='lg'>
-    //               Submit Search
-    //             </Button>
-    //           </Col>
-    //         </Form.Row>
-    //       </Form>
-    //     </Container>
-    //   </div>
+//       <div fluid className='text-light bg-dark'>
+//         <Container>
+//           <h1>Search for Drinks!</h1>
+//           <Form onSubmit={handleFormSubmit}>
+//             <Form.Row>
+//               <Col xs={12} md={8}>
+//                 <Form.Control
+//                   name='searchInput'
+//                   value={searchInput}
+//                   onChange={(e) => setSearchInput(e.target.value)}
+//                   type='text'
+//                   size='lg'
+//                   placeholder='Search for a drink'
+//                 />
+//               </Col>
+//               <Col xs={12} md={4}>
+//                 <Button type='submit' variant='success' size='lg'>
+//                   Submit Search
+//                 </Button>
+//               </Col>
+//             </Form.Row>
+//           </Form>
+//         </Container>
+//       </div>
 
 //       <Container>
 //         <h2>
