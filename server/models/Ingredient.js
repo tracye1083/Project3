@@ -3,11 +3,11 @@ const { Schema, model } = require('mongoose');
 const ingredientSchema = new Schema({
     name: {
         type: String,
-        required: true,
+        // required: true,
     },
     measure: {
         type: String,
-        required: true,
+        // required: true,
     }
 })
 
