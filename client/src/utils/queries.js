@@ -25,7 +25,7 @@ export const GET_DRINKS = gql`
             name
             ingredients
             measure
-            instruction
+            instructions
         }
     }
 `;
@@ -37,14 +37,4 @@ export const GET_DRINK_BY_INGREDIENT = gql`
             ingredients
             instructions
         }
-    }    
-// {
-//         drinks {
-//             drinkId
-//             ingredients
-//             glass
-//             instructions
-//             name
-//             image
-//         }
     }`;

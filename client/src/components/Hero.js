@@ -1,21 +1,15 @@
 import React from 'react';
 
 import { FloatingLabel, Form, Row, Container, Button } from 'react-bootstrap';
-import { GET_DRINK_BY_INGREDIENT } from '../utils/queries';
-import { useQuery } from '@apollo/client';
+import { GET_DRINKS } from '../utils/queries';
+import { useQuery } from '@apollo/react-hooks';
 
 
 const Hero = () => {
   
   const { loading, data } = useQuery(GET_DRINKS);
   const drinkData = data?.drinks || [];
-
-
-
-
-
-
-
+  console.log(drinkData)
 
   return (
       
