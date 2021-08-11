@@ -7,8 +7,8 @@ import { useQuery } from '@apollo/client';
 
 const Hero = () => {
   
-  const { loading, data } = useQuery(GET_DRINK_BY_INGREDIENT);
-  const drinkData = data?.drinkByIngredient || [];
+  const { loading, data } = useQuery(GET_DRINKS);
+  const drinkData = data?.drinks || [];
 
 
 
