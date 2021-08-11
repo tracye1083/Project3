@@ -1,26 +1,25 @@
-//New code here: 
-
-
-
-
-
+// //New code here: 
 
 // import React, {useState, useEffect} from 'react';
 // import Auth from '../utils/auth';
-// import {Jumbotron, Container, Col, Form, Button, Card, CardColumns} from 'react-bootstrap';
-// // import {searchGoogleBooks} from '../utils/API';
+// import { Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 // import {saveDrinkIds, getSavedDrinkIds} from '../utils/localStorage';
 // import {SAVE_DRINK} from '../utils/mutations';
 // import {useMutation} from '@apollo/react-hooks';
 
+
+
+
+
+
 // const SearchDrinks = () => {
 //   const [saveDrink, {error}] = useMutation(SAVE_DRINK);
-//   // create state for holding returned google api data
+//   // create state for holding returned data
 //   const [searchedDrinks, setSearchedDrinks] = useState([]);
 //   // create state for holding our search field data
 //   const [searchInput, setSearchInput] = useState('');
 
-//   // create state to hold saved bookId values
+//   // create state to hold saved drinkId values
 //   const [savedDrinkIds, setSavedDrinkIds] = useState(getSavedDrinkIds());
 
 //   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
@@ -29,7 +28,7 @@
 //     return () => saveDrinkIds(savedDrinkIds);
 //   });
 
-//   // create method to search for books and set state on form submit
+//   // create method to search for drinks and set state on form submit
 //   const handleFormSubmit = async (event) => {
 //     event.preventDefault();
 
@@ -38,7 +37,7 @@
 //     }
 
 //     try {
-//       const response = await searchDrinksAPI(searchInput);
+//       const response = await SearchDrinks(searchInput);
 
 //       if (!response.ok) {
 //         throw new Error('something went wrong!');
@@ -51,7 +50,7 @@
 //         ingredients: drink.ingredients || ['No ingredients to display'],
 //         title: drink.title,
 //         description: drink.description,
-//         image: drink.volumeInfo.imageLinks?.thumbnail || '',
+//         image: drink.image || '',
 //       }));
 
 //       setSearchedDrinks(drinkData);
@@ -89,30 +88,30 @@
 
 //   return (
 //     <>
-//       <Jumbotron fluid className='text-light bg-dark'>
-//         <Container>
-//           <h1>Search for Drinks!</h1>
-//           <Form onSubmit={handleFormSubmit}>
-//             <Form.Row>
-//               <Col xs={12} md={8}>
-//                 <Form.Control
-//                   name='searchInput'
-//                   value={searchInput}
-//                   onChange={(e) => setSearchInput(e.target.value)}
-//                   type='text'
-//                   size='lg'
-//                   placeholder='Search for a drink'
-//                 />
-//               </Col>
-//               <Col xs={12} md={4}>
-//                 <Button type='submit' variant='success' size='lg'>
-//                   Submit Search
-//                 </Button>
-//               </Col>
-//             </Form.Row>
-//           </Form>
-//         </Container>
-//       </Jumbotron>
+    //   <div fluid className='text-light bg-dark'>
+    //     <Container>
+    //       <h1>Search for Drinks!</h1>
+    //       <Form onSubmit={handleFormSubmit}>
+    //         <Form.Row>
+    //           <Col xs={12} md={8}>
+    //             <Form.Control
+    //               name='searchInput'
+    //               value={searchInput}
+    //               onChange={(e) => setSearchInput(e.target.value)}
+    //               type='text'
+    //               size='lg'
+    //               placeholder='Search for a drink'
+    //             />
+    //           </Col>
+    //           <Col xs={12} md={4}>
+    //             <Button type='submit' variant='success' size='lg'>
+    //               Submit Search
+    //             </Button>
+    //           </Col>
+    //         </Form.Row>
+    //       </Form>
+    //     </Container>
+    //   </div>
 
 //       <Container>
 //         <h2>
@@ -121,7 +120,7 @@
 //             : 'Search for a drink to begin'}
 //         </h2>
 //         <CardColumns>
-//           {searchedDrinks.map((book) => {
+//           {searchedDrinks.map((drink) => {
 //             return (
 //               <Card key={drink.drinkId} border='dark'>
 //                 {drink.image ? (
