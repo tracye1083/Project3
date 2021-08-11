@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import SearchDrinks from './pages/SearchDrinks';
 import SavedDrinks from './pages/SavedDrinks';
+import HomePage from './pages/HomePage';
 
 const client = new ApolloClient({
   request: operation => {
@@ -26,10 +27,11 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
           <Navbar/>
-          <Hero/>
+          
           <Switch>
-            
-            
+            <Route exact path = '/' component={HomePage} />
+            <Route exact path='/saved' component={SavedDrinks} />
+
           </Switch>
       </Router>
     </ApolloProvider>
