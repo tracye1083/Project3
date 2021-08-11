@@ -30,15 +30,6 @@ export const LOGIN_USER = gql`
                     _id
                     username
                     email
-                    drinkCount
-                    savedDrinks {
-                        drinkId
-                        ingredients
-                        glass
-                        instructions
-                        name
-                        image
-                    }
                 }
         }
     }

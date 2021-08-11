@@ -1,13 +1,21 @@
 import React from 'react';
-import { FloatingLabel, Form, Row, Container } from 'react-bootstrap';
+
+import { FloatingLabel, Form, Row, Container, Button } from 'react-bootstrap';
 import { GET_DRINK_BY_INGREDIENT } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
 
-function Hero() {
+const Hero = () => {
   
   const { loading, data } = useQuery(GET_DRINK_BY_INGREDIENT);
   const drinkData = data?.drinkByIngredient || [];
+
+
+
+
+
+
+
 
   return (
       
@@ -30,7 +38,20 @@ function Hero() {
    
     </Row>
     </Container>
+
+    <Form className='submitContainer'>
+      <Button as="input" type="submit" value="Submit" className='submit' />{' '}
+    </Form>
+    
+
+    <Container className='searchResults' id='searchResults' >
+      <div id='card'></div>
+    </Container>
+
+
     </div>
+
+  
     
   );
 }
