@@ -38,3 +38,5 @@ export const GET_DRINK_BY_INGREDIENT = gql`
             instructions
         }
     }`;
+    
+export const GRAPHQL_API = 'http://localhost:3001/graphql'

@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import * as Queries from '../utils/queries';
+// import axios from 'axios';
 
 import { FloatingLabel, Form, Row, Container, Button } from 'react-bootstrap';
 import { GET_DRINKS } from '../utils/queries';
 import { useQuery } from '@apollo/react-hooks';
+import { isNonEmptyArray } from '@apollo/client/utilities';
 
 
 const Hero = () => {
   
-  const { loading, data } = useQuery(GET_DRINKS);
-  const drinkData = data?.drinks || [];
-  console.log(drinkData)
+ 
+
+  //TRYING BY LOOPING THROUGH ARRAY
+  // const drinkData = data?.drinks[i].ingredients || [];
+
+  // for(let i=0; i=drinkData.length; i++) {
+  //   const { loading, data } = useQuery(GET_DRINKS);
+    
+  //   console.log([i]);
+  // }
 
   return (
       
@@ -39,7 +49,10 @@ const Hero = () => {
     
 
     <Container className='searchResults' id='searchResults' >
-      <div id='card'></div>
+      <div id='card'>
+      
+       
+      </div>
     </Container>
 
 
