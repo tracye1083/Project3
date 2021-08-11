@@ -19,14 +19,21 @@ export const GET_USER = gql`
     }
 `;
 
-export const GET_DRINK = gql`
-    {
-        drinks {
-            drinkId
-            ingredients
-            glass
-            instructions
+export const GET_DRINK_BY_INGREDIENT = gql`
+    query drinksByIngredient($ingredient: String) {
+        drinkByIngredient(ingredient: $ingredient) {
             name
-            image
+            ingredients
+            instructions
         }
-    }`
+    }    
+// {
+//         drinks {
+//             drinkId
+//             ingredients
+//             glass
+//             instructions
+//             name
+//             image
+//         }
+    }`;
