@@ -1,17 +1,3 @@
-// // New code here:
-// import React from 'react';
-
-
-// const SavedDrinks = () => {
-//     return (
-//         <div>
-//             <h1>Saved Drinks Page!</h1>
-//         </div>
-//     )
-// }
-
-// export default SavedDrinks; 
-
 import React from 'react';
 import Auth from '../utils/auth';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
@@ -56,14 +42,14 @@ const SavedDrinks = () => {
     <>
     
         <Container>
-          <h1>Viewing saved drinks!</h1>
+          <h1 className='userPageText' >Your saved drinks:</h1>
         </Container>
       
       <Container>
-        <h2>
+        <h2 className='userPageText'>
           {userData.savedDrinks && userData.savedDrinks.length
             ? `Viewing ${userData.savedDrinks.length} saved ${userData.savedDrinks.length === 1 ? 'drink' : 'drinks'}:`
-            : 'You have no saved drinks!'}
+            : 'You have no saved drinks. Better get drinking...'}
         </h2>
         <CardColumns>
           {userData.savedDrinks && userData.savedDrinks.map((drink) => {

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Hero from '../components/Hero';
+import SearchDrinks from '../components/SearchDrinks';
 import Axios from 'axios';
 import * as Queries from '../utils/queries';
 

@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import SearchDrinks from './pages/SearchDrinks';
+import SearchDrinks from './components/SearchDrinks';
 import SavedDrinks from './pages/SavedDrinks';
 import HomePage from './pages/HomePage';
 

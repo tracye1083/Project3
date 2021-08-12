@@ -10,8 +10,6 @@ import { isNonEmptyArray } from '@apollo/client/utilities';
 
 const Hero = () => {
   
- 
-
   //TRYING BY LOOPING THROUGH ARRAY
   // const drinkData = data?.drinks[i].ingredients || [];
 
