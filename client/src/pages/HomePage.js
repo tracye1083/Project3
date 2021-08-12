@@ -16,6 +16,7 @@ const HomePage = () => {
         }
       );
       const result = queryResult.data.data;
+      
       setDrinkData( { drinks: result.drinks } )
     }
     fetchData();
