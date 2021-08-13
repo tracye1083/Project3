@@ -20,7 +20,7 @@ export const GET_USER = gql`
 `;
 
 export const GET_DRINKS = gql`
-    {
+    query {
         drinks {
             name
             ingredients
@@ -36,6 +36,7 @@ export const GET_DRINK_BY_INGREDIENT = gql`
             name
             ingredients
             instructions
+            measure
         }
     }`;
     
