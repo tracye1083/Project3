@@ -1,21 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as Queries from '../utils/queries';
 import { FloatingLabel, Form, Row, Container, Button } from 'react-bootstrap';
 import { GET_DRINKS } from '../utils/queries';
-import { useQuery } from '@apollo/react-hooks';
-import { isNonEmptyArray } from '@apollo/client/utilities';
+import { useQuery } from '@apollo/client';
+// import { isNonEmptyArray } from '@apollo/client/utilities';
 
 const Hero = () => {
   const [drink, setDrink] = useState('');
+  
+  // const { data } = useQuery(GET_DRINKS, {
+  //   variables: {
+  //     name: drink
+  //   }
+  // }) 
+  // const drinkData = data?.drinks || [];
+  //   console.log(drinkData)
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
   
     if (!drink) {
       return false;
-    } 
-    console.log(drink)
-    location.replace('/searchDrinks');
-  }
+    };
+    console.log(drink);
+  };
 
 
   return (
@@ -32,13 +41,7 @@ const Hero = () => {
       <Form.Control onChange={e => {setDrink(e.target.value)}} className='userInput' type="input" placeholder="Gin" />
       </FloatingLabel>
 
-      <Form.Select aria-label="Floating label select example" className='userInput'>
-        <option>Search by Ingredients</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </Form.Select>
-      <Button type="submit">Submit</Button>
+      <Button type="submit" className='searchBtn' >Find Drinks!</Button>
     </Form>   
     </Row>
 
