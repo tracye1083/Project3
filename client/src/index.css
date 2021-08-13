@@ -59,9 +59,16 @@ h6 {
   
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .userInput {
   text-align: center;
   background-color: white;
+  width: 20em;
 }
 
 .searchResults {
@@ -85,4 +92,11 @@ h6 {
 
 .userPageText {
   color: white;
+}
+
+.searchBtn {
+  margin-top: .75em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
 }

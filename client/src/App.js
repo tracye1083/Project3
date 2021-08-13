@@ -31,7 +31,7 @@ function App() {
           <Switch>
             <Route exact path = '/' component={HomePage} />
             <Route exact path='/saved' component={SavedDrinks} />
-            <Route exact path='/search' component={SearchDrinks} />
+            
           </Switch>
       </Router>
     </ApolloProvider>
