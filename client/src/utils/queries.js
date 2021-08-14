@@ -1,37 +1,28 @@
-import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
 
-export const GET_USER = gql`
-    {
-        me {
-            _id
-            username
-            email
-            drinkCount
-            savedDrinks {
-                drinkId
-                ingredients
-                glass
-                instructions
-                name
-                image
-            }
-        }
+export const QUERY_PROFILES = gql`
+  query allProfiles {
+    profiles {
+      _id
+      name
+      skills
     }
+  }
 `;
 
 export const GET_DRINKS = gql`
-    query {
+    query allDrinks {
         drinks {
             name
             ingredients
             measure
             instructions
         }
-    }
+      }
 `;
 
 export const GET_DRINK_BY_INGREDIENT = gql`
-    query drinksByIngredient($ingredient: String) {
+    query drinkByIngredient($ingredient: String) {
         drinkByIngredient(ingredient: $ingredient) {
             name
             ingredients
@@ -39,5 +30,24 @@ export const GET_DRINK_BY_INGREDIENT = gql`
             measure
         }
     }`;
-    
-export const GRAPHQL_API = 'http://localhost:3001/graphql'
+
+export const QUERY_SINGLE_PROFILE = gql`
+  query singleProfile($profileId: ID!) {
+    profile(profileId: $profileId) {
+      _id
+      name
+      skills
+    }
+  }
+`;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      name
+      skills
+    }
+  }
+`;
+

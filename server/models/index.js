@@ -1,6 +1,4 @@
-const User = require('./User');
-const Drink = require('./Drink')
-const Ingredient = require('./Ingredient');
-const Measure = require('./Measure')
+const Profile = require('./Profile');
+const Drink = require('./Drink');
 
-module.exports = { User, Drink, Ingredient, Measure };
+module.exports = { Profile, Drink }

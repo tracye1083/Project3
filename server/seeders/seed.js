@@ -1,34 +1,20 @@
 const db = require('../config/connection');
-const { Drink, Ingredient, Measure, User } = require('../models');
+const { Profile, Drink } = require('../models');
+const profileSeeds = require('./profileSeeds.json');
 const drinkSeeds = require('./cocktails.json');
-const ingredientSeeds = require('./ingredientsSeed.json');
-const measuresSeed = require('./measuresSeed.json');
-const userSeeds = require('./userSeeds.json');
 
 db.once('open', async () => {
     try {
+        await Profile.deleteMany({});
+        await Profile.create(profileSeeds);
+        console.log('Profile database seeded.')
+
         await Drink.deleteMany({});
         await Drink.create(drinkSeeds);
-
-        console.log('Drink database seeded.')
-
-        await Ingredient.deleteMany({});
-        await Ingredient.create(ingredientSeeds)
-
-        console.log('Ingredients database seeded.')
-
-        await Measure.deleteMany({});
-        await Measure.create(measuresSeed);
-
-        console.log('Measures database seeded.')
-
-        await User.deleteMany({});
-        await User.create(userSeeds); 
-
-        console.log('Users database seeded.')
+        console.log('Drink database seeded');
 
         process.exit(0);
     } catch (err) {
         throw err;
     }
-})
+});
