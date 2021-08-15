@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GET_DRINK_BY_INGREDIENT } from '../../utils/queries';
 
-const ProfileList = ({ drinks, title }) => {
+const DrinkSearch = ({ drinks, title }) => {
   const [ingredient, setIngredient] = useState();
 
   const [search, { loading, data }] = useLazyQuery(GET_DRINK_BY_INGREDIENT, {
@@ -99,4 +99,4 @@ const ProfileList = ({ drinks, title }) => {
   );
 };
 
-export default ProfileList;
+export default DrinkSearch;
