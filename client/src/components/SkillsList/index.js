@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { REMOVE_SKILL } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 
-const SkillsList = ({ skills, isLoggedInUser = false }) => {
+const UserDrinkList = ({ skills, isLoggedInUser = false }) => {
   const [removeSkill, { error }] = useMutation(REMOVE_SKILL, {
     update(cache, { data: { removeSkill } }) {
       try {
@@ -29,7 +29,7 @@ const SkillsList = ({ skills, isLoggedInUser = false }) => {
   };
 
   if (!skills.length) {
-    return <h3>No Skills Yet</h3>;
+    return <h3>No Drinks Yet</h3>;
   }
 
   return (
@@ -61,4 +61,4 @@ const SkillsList = ({ skills, isLoggedInUser = false }) => {
   );
 };
 
-export default SkillsList;
+export default UserDrinkList;
