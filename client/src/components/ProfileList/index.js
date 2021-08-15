@@ -64,23 +64,23 @@ const ProfileList = ({ drinks, title }) => {
             drinkData.map((drink) => (
               <div key={drink._id} className="col-12 col-xl-6">
                 <div className="card mb-3">
-                  <h4 className="card-header bg-dark text-light p-2 m-0">
+                  <h4 className="card-header bg-primary text-light p-2 m-0">
                     {drink.name} <br />
                     <span className="text-white" style={{ fontSize: '1rem' }}>
-                      currently has {drink.name ? drink.ingredients.length : 0}{' '}
+                      Has {drink.name ? drink.ingredients.length : 0}{' '}
                       ingredient 
                       {drink.name && drink.name.length === 1 ? '' : 's'}
                     </span>
                   </h4>
                   <ul>
                     <li>
-                      {drink.name && drink.instructions}
-                    </li>
-                    <li>
                       {drink.name && drink.ingredients}
                     </li>
                     <li>
                       {drink.name && drink.measure}
+                    </li>
+                    <li>
+                      {drink.name && drink.instructions}
                     </li>
                   </ul>
   
@@ -88,7 +88,7 @@ const ProfileList = ({ drinks, title }) => {
                     className="btn btn-block btn-squared btn-light text-dark"
                     to={`/drinks/${drink._id}`}
                   >
-                    View and endorse their skills.
+                    This is placeholder text.
                   </Link>
                 </div>
               </div>
