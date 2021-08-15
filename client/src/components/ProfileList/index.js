@@ -68,10 +68,21 @@ const ProfileList = ({ drinks, title }) => {
                     {drink.name} <br />
                     <span className="text-white" style={{ fontSize: '1rem' }}>
                       currently has {drink.name ? drink.ingredients.length : 0}{' '}
-                      ingredient
+                      ingredient 
                       {drink.name && drink.name.length === 1 ? '' : 's'}
                     </span>
                   </h4>
+                  <ul>
+                    <li>
+                      {drink.name && drink.instructions}
+                    </li>
+                    <li>
+                      {drink.name && drink.ingredients}
+                    </li>
+                    <li>
+                      {drink.name && drink.measure}
+                    </li>
+                  </ul>
   
                   <Link
                     className="btn btn-block btn-squared btn-light text-dark"

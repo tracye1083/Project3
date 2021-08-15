@@ -28,6 +28,7 @@ export const GET_DRINK_BY_INGREDIENT = gql`
             ingredients
             instructions
             measure
+            image
         }
     }`;
 
