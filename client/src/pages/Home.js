@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import ProfileList from '../components/ProfileList';
+import DrinkSearch from '../components/DrinkSearch';
 
 import { GET_DRINKS } from '../utils/queries';
 
@@ -15,8 +15,8 @@ const Home = () => {
     <main>
       <div className="flex-row justify-center">
         <div className="col-12 col-md-10 my-3">
-          <ProfileList
-            title="Search for an ingredient below"
+          <DrinkSearch
+            title="Search for an ingredient above"
           /> 
         </div>
       </div>
@@ -31,6 +31,6 @@ export default Home;
           // ) : (
           //   <ProfileList
           //     drinks={drinkData}
-          //     title="Search for an ingredient below"
+          //     title="Search for an ingredient above"
           //   />
           // )}
