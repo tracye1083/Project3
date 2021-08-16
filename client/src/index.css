@@ -41,7 +41,7 @@
 
 body {
   animation-name: onLoad;
-  animation-duration: 3s;
+  animation-duration: 2s;
   margin: 0;
   background-image: url('components/bg2.jpeg');
   background-position: center;
