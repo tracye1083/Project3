@@ -17,8 +17,35 @@
 /**
  * Remove the margin in all browsers.
  */
+
+/* @keyframes change {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+} */
+
+@keyframes onLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 body {
+  animation-name: onLoad;
+  animation-duration: 3s;
   margin: 0;
+  background-image: url('components/cocktailbg.jpeg');
+  background-position: center;
+  background-color: #ffffff;
 }
 
 /**
@@ -26,6 +53,11 @@ body {
  */
 main {
   display: block;
+  /* animation: change 60s ease-in-out infinite;
+  background-size: 400% 400%;
+  position: relative;
+  /* background: rgb(255, 255, 255); */
+ 
 }
 
 container {
@@ -41,7 +73,7 @@ form {
   justify-content: center;
   border: 2px solid black;
   padding: 5px;
-  background-color: rgb(140, 66, 1);
+  background-color: black;
   border-radius: 10px !important;
 }
 

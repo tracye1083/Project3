@@ -214,7 +214,7 @@ const DrinkSearch = ({ drinks, title }) => {
           {drinkData &&
             drinkData.map((drink) => (
               <div key={drink._id} className="col-12 col-xl-6">
-                <div className="card mb-3">
+                <div className="card mb-3 bg-dark text-light">
                   <h4 className="card-header bg-primary text-light p-2 m-0">
                     {drink.name} <br />
                     <span className="text-white" style={{ fontSize: '1rem' }}>
