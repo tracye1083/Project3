@@ -2,6 +2,7 @@ import { useLazyQuery } from '@apollo/client';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GET_DRINK_BY_INGREDIENT } from '../../utils/queries';
+import { Button } from 'react-bootstrap'
 
 const DrinkSearch = ({ drinks, title }) => {
   const [ingredient, setIngredient] = useState('');
@@ -35,11 +36,12 @@ const DrinkSearch = ({ drinks, title }) => {
   // }
 
   return (
-    <>
+    <div className='container'>
     <form onSubmit={handleFormSubmit}>
       <label className='formLabel'>
-        Pick your poison:<br></br>
+        Choose a Booze:<br></br>
         <select value={ingredient} onChange={(e) => setIngredient(e.target.value)}>
+          <option disabled>Choose a booze below!</option>
           <option value="151 Proof Rum">151 Proof Rum</option>
           <option value="Absinthe">Absinthe</option>
           <option value="Absolut Citron">Absolut Citron</option>
@@ -203,7 +205,7 @@ const DrinkSearch = ({ drinks, title }) => {
           
         </select>
       </label><br></br>
-      <input className='submit' type="submit" value="Submit" />
+      <Button className='submit' type="submit" value="Submit">Show Drinks</Button>
     </form>
     
     <div>
@@ -246,7 +248,7 @@ const DrinkSearch = ({ drinks, title }) => {
 
     </div>
 
-    </>
+    </div>
     
     // <div>
     //   <form
