@@ -35,9 +35,10 @@ const DrinkSearch = ({ drinks, title }) => {
   // }
 
   return (
+    <>
     <form onSubmit={handleFormSubmit}>
-      <label>
-        Pick your poison:
+      <label className='formLabel'>
+        Pick your poison:<br></br>
         <select value={ingredient} onChange={(e) => setIngredient(e.target.value)}>
           <option value="151 Proof Rum">151 Proof Rum</option>
           <option value="Absinthe">Absinthe</option>
@@ -201,9 +202,52 @@ const DrinkSearch = ({ drinks, title }) => {
           <option value="Zima">Zima</option>
           
         </select>
-      </label>
-      <input type="submit" value="Submit" />
+      </label><br></br>
+      <input className='submit' type="submit" value="Submit" />
     </form>
+    
+    <div>
+      <h3 className='text-primary'>{title}</h3>
+      <div className="flex-row justify-space-between my-4">
+          {drinkData &&
+            drinkData.map((drink) => (
+              <div key={drink._id} className="col-12 col-xl-6">
+                <div className="card mb-3">
+                  <h4 className="card-header bg-primary text-light p-2 m-0">
+                    {drink.name} <br />
+                    <span className="text-white" style={{ fontSize: '1rem' }}>
+                      Has {drink.name ? drink.ingredients.length : 0}{' '}
+                      ingredient 
+                      {drink.name && drink.name.length === 1 ? '' : 's'}
+                    </span>
+                  </h4>
+                  <ul>
+                    <li>
+                      {drink.name && drink.ingredients}
+                    </li>
+                    <li>
+                      {drink.name && drink.measure}
+                    </li>
+                    <li>
+                      {drink.name && drink.instructions}
+                    </li>
+                  </ul>
+  
+                  <Link
+                    className="btn btn-block btn-squared btn-light text-dark"
+                    to={`/me/${drink._id}`}
+                  >
+                    Save to Favorites
+                  </Link>
+                </div>
+              </div>
+            ))}
+        </div>
+
+    </div>
+
+    </>
+    
     // <div>
     //   <form
     //     className="flex-row justify-center justify-space-between-md align-center"
