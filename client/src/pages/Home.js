@@ -15,9 +15,7 @@ const Home = () => {
     <main>
       <div className="flex-row justify-center">
         <div className="col-12 col-md-10 my-3">
-          <DrinkSearch
-            title="Search for an ingredient above"
-          /> 
+          <DrinkSearch/> 
         </div>
       </div>
     </main>

@@ -28,6 +28,52 @@ main {
   display: block;
 }
 
+container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 10px, 10px, 10px, 5px !important;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid black;
+  padding: 5px;
+  background-color: rgb(140, 66, 1);
+  border-radius: 10px !important;
+}
+
+select {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  color: grey;
+  border-radius: 5px !important;
+}
+
+label {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-weight: 500;
+  color: ivory
+}
+
+Button {
+  /* width: 7em;
+  height: 3em;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 20%;
+  background-color: rgb(2, 117, 216) !important; */
+  color: white;
+  width: 10em;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border: 2px solid black !important;
+}
+
+
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.

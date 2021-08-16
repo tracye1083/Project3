@@ -2,6 +2,7 @@ import { useLazyQuery } from '@apollo/client';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GET_DRINK_BY_INGREDIENT } from '../../utils/queries';
+import { Button } from 'react-bootstrap'
 
 const DrinkSearch = ({ drinks, title }) => {
   const [ingredient, setIngredient] = useState('');
@@ -35,10 +36,12 @@ const DrinkSearch = ({ drinks, title }) => {
   // }
 
   return (
+    <div className='container'>
     <form onSubmit={handleFormSubmit}>
-      <label>
-        Pick your poison:
+      <label className='formLabel'>
+        Choose a Booze:<br></br>
         <select value={ingredient} onChange={(e) => setIngredient(e.target.value)}>
+          <option disabled>Choose a booze below!</option>
           <option value="151 Proof Rum">151 Proof Rum</option>
           <option value="Absinthe">Absinthe</option>
           <option value="Absolut Citron">Absolut Citron</option>
@@ -201,9 +204,52 @@ const DrinkSearch = ({ drinks, title }) => {
           <option value="Zima">Zima</option>
           
         </select>
-      </label>
-      <input type="submit" value="Submit" />
+      </label><br></br>
+      <Button className='submit' type="submit" value="Submit">Show Drinks</Button>
     </form>
+    
+    <div>
+      <h3 className='text-primary'>{title}</h3>
+      <div className="flex-row justify-space-between my-4">
+          {drinkData &&
+            drinkData.map((drink) => (
+              <div key={drink._id} className="col-12 col-xl-6">
+                <div className="card mb-3">
+                  <h4 className="card-header bg-primary text-light p-2 m-0">
+                    {drink.name} <br />
+                    <span className="text-white" style={{ fontSize: '1rem' }}>
+                      Has {drink.name ? drink.ingredients.length : 0}{' '}
+                      ingredient 
+                      {drink.name && drink.name.length === 1 ? '' : 's'}
+                    </span>
+                  </h4>
+                  <ul>
+                    <li>
+                      {drink.name && drink.ingredients}
+                    </li>
+                    <li>
+                      {drink.name && drink.measure}
+                    </li>
+                    <li>
+                      {drink.name && drink.instructions}
+                    </li>
+                  </ul>
+  
+                  <Link
+                    className="btn btn-block btn-squared btn-light text-dark"
+                    to={`/me/${drink._id}`}
+                  >
+                    Save to Favorites
+                  </Link>
+                </div>
+              </div>
+            ))}
+        </div>
+
+    </div>
+
+    </div>
+    
     // <div>
     //   <form
     //     className="flex-row justify-center justify-space-between-md align-center"
