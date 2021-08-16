@@ -12,6 +12,11 @@ const resolvers = {
       return await Drink.find({});
       },
 
+    favDrinks: async (parent, { ids }) => {
+      //Finds all drinks with an id from the array of ids
+      return await Drink.find({_id: {$in: ids}});
+    },
+
     profile: async (parent, { profileId }) => {
       return Profile.findOne({ _id: profileId });
     },
