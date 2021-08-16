@@ -43,7 +43,7 @@ body {
   animation-name: onLoad;
   animation-duration: 3s;
   margin: 0;
-  background-image: url('components/cocktailbg.jpeg');
+  background-image: url('components/bg2.jpeg');
   background-position: center;
   background-color: #ffffff;
 }
