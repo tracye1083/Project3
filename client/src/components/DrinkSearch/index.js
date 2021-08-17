@@ -7,9 +7,10 @@ import { saveDrink } from '../../utils/localStorage';
 
 const DrinkSearch = ({ drinks, title }) => {
   const [ingredient, setIngredient] = useState('');
-  
+  const [searchTerm, setSearchTerm] = useState('');
+
   const [search, { loading, data }] = useLazyQuery(GET_DRINK_BY_INGREDIENT, {
-    variables: { ingredient: ingredient }
+    variables: { ingredient: searchTerm }
   })
 
   const drinkData = data?.drinkByIngredient || [];
@@ -17,7 +18,8 @@ const DrinkSearch = ({ drinks, title }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(ingredient)
+    setSearchTerm(ingredient)
+    console.log(searchTerm)
     search();
   }
 
@@ -39,7 +41,13 @@ const DrinkSearch = ({ drinks, title }) => {
   return (
     <div className='container'>
     <form onSubmit={handleFormSubmit}>
-      <label className='formLabel'>
+          <input
+            placeholder="Vodka, gin, rum..."
+            value={ingredient}
+            className="form-input w-100"
+            onChange={(event) => setIngredient(event.target.value)}
+          />  
+    <label className='formLabel'>
         Choose a Booze:<br></br>
         <select value={ingredient} onChange={(e) => setIngredient(e.target.value)}>
           <option disabled>Choose a booze below!</option>
@@ -206,7 +214,7 @@ const DrinkSearch = ({ drinks, title }) => {
           
         </select>
       </label><br></br>
-      <Button className='submit' type="submit" value="Submit">Show Drinks</Button>
+      <button className="submit" type="submit" value="Submit">Show Drinks</button>
     </form>
     
     <div>
