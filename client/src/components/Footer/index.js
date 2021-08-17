@@ -5,8 +5,8 @@ const Footer = () => {
   const location = useLocation();
   const history = useHistory();
   return (
-    <footer className="w-100 mt-auto text-dark p-4 bg-primary">
-      <div className="container text-center mb-5">
+    <footer className="w-100 mt-auto text-dark p-3 bg-primary">
+      <div className="container text-center">
         {location.pathname !== '/' && (
           <button
             className="btn btn-dark mb-3"

@@ -13,6 +13,7 @@ export const QUERY_PROFILES = gql`
 export const GET_DRINKS = gql`
     query allDrinks {
         drinks {
+            _id
             name
             ingredients
             measure
@@ -21,9 +22,23 @@ export const GET_DRINKS = gql`
       }
 `;
 
+export const GET_FAV_DRINKS = gql`
+    query favDrinks($id: [ID]) {
+        favDrinks(ids: $id) {
+            _id
+            name
+            ingredients
+            measure
+            instructions
+        }
+      }
+`;
+
+
 export const GET_DRINK_BY_INGREDIENT = gql`
     query drinkByIngredient($ingredient: String) {
         drinkByIngredient(ingredient: $ingredient) {
+            _id
             name
             ingredients
             instructions

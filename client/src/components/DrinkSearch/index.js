@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GET_DRINK_BY_INGREDIENT } from '../../utils/queries';
 import { Button } from 'react-bootstrap'
+import { saveDrink } from '../../utils/localStorage';
 
 const DrinkSearch = ({ drinks, title }) => {
   const [ingredient, setIngredient] = useState('');
@@ -236,6 +237,7 @@ const DrinkSearch = ({ drinks, title }) => {
                   </ul>
   
                   <Link
+                    onClick={ () => saveDrink(drink._id)}
                     className="btn btn-block btn-squared btn-light text-dark"
                     to={`/me/${drink._id}`}
                   >
