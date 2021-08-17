@@ -19,10 +19,10 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  skills: [
+  savedDrinks: [
     {
-      type: String,
-      trim: true,
+      type: Schema.Types.ObjectId,
+      ref: 'Drink',
     },
   ],
 });
