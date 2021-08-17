@@ -115,6 +115,11 @@ h1 {
   margin: 0.67em 0;
 }
 
+.userPageText {
+  color: white;
+  background-color: black;
+}
+
 /* Grouping content
    ========================================================================== */
 /**
