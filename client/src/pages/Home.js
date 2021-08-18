@@ -1,14 +1,8 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
 
 import DrinkSearch from '../components/DrinkSearch';
 
-import { GET_DRINKS } from '../utils/queries';
-
 const Home = () => {
-  // const { loading, data } = useQuery(GET_DRINKS);
-  // const drinkData = data?.drinks || [];
-  // console.log(drinkData)
 
   return (
     
@@ -23,12 +17,3 @@ const Home = () => {
 };
 
 export default Home;
-
-        // {loading ? (
-          //   <div>Loading...</div>
-          // ) : (
-          //   <ProfileList
-          //     drinks={drinkData}
-          //     title="Search for an ingredient above"
-          //   />
-          // )}
