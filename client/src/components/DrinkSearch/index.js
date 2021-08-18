@@ -46,15 +46,15 @@ const DrinkSearch = ({ drinks, title }) => {
 
   return (
     <div className='container'>
-      <form onSubmit={handleFormSubmit}>
-        <input
+      <form onSubmit={handleFormSubmit} className='p-5'>
+        <input style={{ color: 'white'}}
           placeholder="Vodka, gin, rum..."
           value={ingredient}
-          className="form-input w-100"
+          className="form-input"
           onChange={(event) => setIngredient(event.target.value)}
         />
         <label className='formLabel'>
-          Choose a Booze:<br></br>
+          <p style={{ color: 'red', backgroundColor: 'white', padding: '10px'}}>Or choose from the dropdown below!</p>
           <select value={ingredient} onChange={(e) => setIngredient(e.target.value)}>
             <option disabled>Choose a booze below!</option>
             <option value="151 Proof Rum">151 Proof Rum</option>
@@ -220,7 +220,7 @@ const DrinkSearch = ({ drinks, title }) => {
 
           </select>
         </label><br></br>
-        <button className="submit" type="submit" value="Submit">Show Drinks</button>
+        <button className="btn submit searchBtn" type="submit" value="Submit">Show Drinks</button>
       </form>
 
       <Results drinkData1={drinkData1} />
