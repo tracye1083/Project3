@@ -13,11 +13,13 @@ export const ADD_PROFILE = gql`
 `;
 
 export const ADD_DRINK = gql`
-  mutation addSkill($profileId: ID!, $skill: String!) {
-    addSkill(profileId: $profileId, skill: $skill) {
-      _id
-      name
-      skills
+  mutation addDrink($name: String!, $glass: String, $measure: [String], $ingredients: [String], instructions: String) {
+    addDrink(name: $name, glass: $glass, measure: $measure, ingredients: $ingredients, instructions: $instructions) {
+        name
+        glass
+        measure
+        ingredients
+        instructions
     }
   }
 `;
@@ -29,6 +31,7 @@ export const LOGIN_USER = gql`
       profile {
         _id
         name
+        drinks
       }
     }
   }

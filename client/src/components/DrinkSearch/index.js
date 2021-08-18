@@ -20,7 +20,7 @@ const DrinkSearch = ({ drinks, title }) => {
       ingsAndMeas = []
       for (let i = 0; i < drinkData[d].ingredients.length; i++) {
         if (drinkData[d].measure[i]) {
-          ingsAndMeas.push(drinkData[d].measure[i] + '- ' + drinkData[d].ingredients[i])
+          ingsAndMeas.push(drinkData[d].measure[i] + ' ' + drinkData[d].ingredients[i])
         }
         else {
           ingsAndMeas.push(drinkData[d].ingredients[i])
@@ -222,8 +222,11 @@ const DrinkSearch = ({ drinks, title }) => {
         </label><br></br>
         <button className="btn submit searchBtn" type="submit" value="Submit">Show Drinks</button>
       </form>
-
+      {loading ? (
+        <div>Loading...</div>
+      ): ( 
       <Results drinkData1={drinkData1} />
+      )}
 
     </div>
   );
