@@ -1,91 +1,48 @@
-import { useLazyQuery, useQuery, useMutation } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { GET_DRINK_BY_INGREDIENT, QUERY_ME } from '../../utils/queries';
-import { SAVE_DRINK } from '../../utils/mutations';
-import { Button } from 'react-bootstrap';
-import { saveDrink } from '../../utils/localStorage';
+import Results from '../Results/index.js'
 
 const DrinkSearch = ({ drinks, title }) => {
   const [ingredient, setIngredient] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [drinkIdData, setDrinkIdData] = useState([]);
-  const { loading: meLoading, data: meData } = useQuery(QUERY_ME);
-  const [saveDrink, { data: myDrinkData }] = useMutation(SAVE_DRINK);
+  
+
   const [search, { loading, data }] = useLazyQuery(GET_DRINK_BY_INGREDIENT, {
     variables: { ingredient: searchTerm }
   })
 
-
-
   let ingsAndMeas = []
   function mergeIngsAndMeas() {
     drinkData1 = []
-    console.log('test123')
-    console.log(drinkData)
-    console.log('test456')
-    //drinkIdData = drinkIdData.concat(drinkData)
-    // setDrinkIdData([...drinkData])
-    console.log("drinkdata")
-    console.log(drinkIdData)
     for (let d = 0; d < drinkData.length; d++) {
-      console.log('name: ' + drinkData[d].name)
       ingsAndMeas = []
       for (let i = 0; i < drinkData[d].ingredients.length; i++) {
-        console.log('ing: ' + drinkData[d].measure[i] + ' ' + drinkData[d].ingredients[i])
         if (drinkData[d].measure[i]) {
-          console.log("meas exist")
           ingsAndMeas.push(drinkData[d].measure[i] + '- ' + drinkData[d].ingredients[i])
         }
         else {
-          console.log("meas not exist")
           ingsAndMeas.push(drinkData[d].ingredients[i])
         }
       }
       drinkData1.push({ "id": drinkData[d]._id, "name": drinkData[d].name, "image": drinkData[d].image, "instructions": drinkData[d].instructions, "ingsAndMeas": ingsAndMeas })
-      console.log(drinkData1)
 
     }
     return drinkData1
   }
 
   const drinkData = data?.drinkByIngredient || [];
-  console.log(drinkData)
   var drinkData1
-  //if (drinkData.length > 0) {
   drinkData1 = mergeIngsAndMeas(drinkData)
-  //}
-  //console.log(drinkIngs)//[1]
-  // console.log([1].measures)
-  console.log("test1")
-  console.log(drinkData1)
-  console.log("test2")
 
-  console.log("meData: ", meData)
-  // console.log("meID: ", meData.me._id)
 
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     setSearchTerm(ingredient)
-    console.log(searchTerm)
     search();
   }
-
-  //   try {
-
-  //   console.log(data)
-  //   console.log(drinkData);
-  //   // setIngredient('');
-  //   console.log(ingredient);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
-  // if (!drinks.length) {
-  //   return <h3>No Drinks Yet</h3>;
-  // }
 
   return (
     <div className='container'>
@@ -266,113 +223,9 @@ const DrinkSearch = ({ drinks, title }) => {
         <button className="submit" type="submit" value="Submit">Show Drinks</button>
       </form>
 
-      <div>
-        <h3 className='text-primary'>{title}</h3>
-        <div className="flex-row justify-space-between my-4">
-          {drinkData1 &&
-            drinkData1.map((drink) => (
-              <div key={drink.id} className="col-12 col-xl-6">
-                <div className="card mb-3 p-4 bg-dark text-light">
-                  <h4 className="card-header bg-primary text-light p-2 m-0">
-                    {drink.name} <br />
-                    <span className="text-white" style={{ fontSize: '1rem' }}>
-                      Has {drink.name ? drink.ingsAndMeas.length : 0}{' '}
-                      ingredient
-                      {drink.name && drink.name.length === 1 ? '' : 's'}
-                    </span>
-                  </h4>
-                  <ul>
-                    {drink.ingsAndMeas.map(function (name, index) {
-                      return <li key={index}>{name}</li>;
-                    })}
-                    <li>
-                      {drink.name && drink.instructions}
-                    </li>
-                  </ul>
-
-                  <Link
-                    onClick={() => saveDrink({
-                      variables: {
-                        profileId: meData.me._id,
-                        drink: drink.id
-                      }
-                    })}
-
-                    className="btn btn-block btn-squared btn-light text-dark"
-                    to={`/me/${meData.me._id}`}
-                  >
-                    Save to Favorites
-                  </Link>
-                </div>
-              </div>
-            ))}
-        </div>
-
-      </div>
+      <Results drinkData1={drinkData1} />
 
     </div>
-
-    // <div>
-    //   <form
-    //     className="flex-row justify-center justify-space-between-md align-center"
-    //     onSubmit={handleFormSubmit}
-    //   >
-    //     <div className="col-12 col-lg-9">
-    //       <input
-    //         placeholder="Vodka, gin, rum..."
-    //         value={ingredient}
-    //         className="form-input w-100"
-    //         onChange={(event) => setIngredient(event.target.value)}
-    //       />
-    //     </div>
-    //     <div className="col-12 col-lg-3">
-    //       <button
-    //         className="btn btn-info btn-block py-3" 
-    //         type="submit"
-    //         >
-    //         Search
-    //       </button>
-    //     </div>
-    //   </form>
-    //   <div>
-    //     <h3 className="text-primary">{title}</h3>
-    //     <div className="flex-row justify-space-between my-4">
-    //       {drinkData &&
-    //         drinkData.map((drink) => (
-    //           <div key={drink._id} className="col-12 col-xl-6">
-    //             <div className="card mb-3">
-    //               <h4 className="card-header bg-primary text-light p-2 m-0">
-    //                 {drink.name} <br />
-    //                 <span className="text-white" style={{ fontSize: '1rem' }}>
-    //                   Has {drink.name ? drink.ingredients.length : 0}{' '}
-    //                   ingredient 
-    //                   {drink.name && drink.name.length === 1 ? '' : 's'}
-    //                 </span>
-    //               </h4>
-    //               <ul>
-    //                 <li>
-    //                   {drink.name && drink.ingredients}
-    //                 </li>
-    //                 <li>
-    //                   {drink.name && drink.measure}
-    //                 </li>
-    //                 <li>
-    //                   {drink.name && drink.instructions}
-    //                 </li>
-    //               </ul>
-
-    //               <Link
-    //                 className="btn btn-block btn-squared btn-light text-dark"
-    //                 to={`/drinks/${drink._id}`}
-    //               >
-    //                 This is placeholder text.
-    //               </Link>
-    //             </div>
-    //           </div>
-    //         ))}
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
