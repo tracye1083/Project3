@@ -10,11 +10,11 @@ const resolvers = {
 
     drinks: async () => {
       return await Drink.find({});
-      },
+    },
 
     favDrinks: async (parent, { ids }) => {
       //Finds all drinks with an id from the array of ids
-      return await Drink.find({_id: {$in: ids}});
+      return await Drink.find({ _id: { $in: ids } });
     },
 
     profile: async (parent, { profileId }) => {
@@ -27,11 +27,11 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    
+
     drinkByIngredient: async (parent, args) => {
-      return await Drink.find({ingredients: args.ingredient})
+      return await Drink.find({ ingredients: args.ingredient })
+    },
   },
-},
 
   Mutation: {
     addProfile: async (parent, { name, email, password }) => {
@@ -61,16 +61,18 @@ const resolvers = {
     saveDrink: async (parent, { profileId, drink }, context) => {
       // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
       // if (context.user) {
-        return Profile.findOneAndUpdate(
-          { _id: profileId },
-          {
-            $addToSet: { drinks: drink },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        ).populate('drinks');
+      console.log("profileid: ", profileId)
+      console.log("drink: ", drink)
+      return Profile.findOneAndUpdate(
+        { _id: profileId },
+        {
+          $addToSet: { drinks: drink },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      ).populate('drinks');
       // }
       // If user attempts to execute this mutation and isn't logged in, throw an error
       throw new AuthenticationError('You need to be logged in!');

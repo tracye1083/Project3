@@ -12,7 +12,7 @@ import { QUERY_PROFILES } from '../utils/queries';
 
 const SavedDrinks = () => {
   const [removeDrink, { error }] = useMutation(REMOVE_DRINK);
-  
+
   const { loading, data } = useQuery(QUERY_PROFILES);
   const userData = data?.me || {};
 
@@ -41,7 +41,7 @@ const SavedDrinks = () => {
   if (loading) {
     return <h2>HAVE A DRINK WHILE I'M WORKING...</h2>;
   }
-  
+
   return (
     <>
       <Jumbotron fluid className='text-light bg-dark'>
@@ -56,10 +56,10 @@ const SavedDrinks = () => {
             : 'You have no saved drinks!'}
         </h2>
         <CardColumns>
-          {userData.savedDrinks.map((book) => {
+          {userData.savedDrinks.map((drink) => {
             return (
-              <Card key={book.drinkId} border='dark'>
-                {book.image ? <Card.Img src={book.image} alt={`The cover for ${drink.title}`} variant='top' /> : null}
+              <Card key={drink.drinkId} border='dark'>
+                {drink.image ? <Card.Img src={drink.image} alt={`The cover for ${drink.title}`} variant='top' /> : null}
                 <Card.Body>
                   <Card.Title>{drink.title}</Card.Title>
                   <p className='small'>Authors: {drink.ingredients}</p>

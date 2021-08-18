@@ -50,28 +50,28 @@ const Profile = () => {
   // }
 
   return (
-   
+
     <Container>
       <h1 className='userPageText' >Your saved drinks:  </h1>
     </Container>
-   
-  //   <div>
-  //     <h2 className="card-header">
-  //       {profileId ? `${profile.name}'s` : 'Your'} friends have endorsed these
-  //       skills...
-  //     </h2>
 
-  //     {profile.skills?.length > 0 && (
-  //       <SkillsList
-  //         skills={profile.skills}
-  //         isLoggedInUser={!profileId && true}
-  //       />
-  //     )}
+    //   <div>
+    //     <h2 className="card-header">
+    //       {profileId ? `${profile.name}'s` : 'Your'} friends have endorsed these
+    //       skills...
+    //     </h2>
 
-  //     <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-  //       <SkillForm profileId={profile._id} />
-  //     </div>
-  //   </div>
+    //     {profile.skills?.length > 0 && (
+    //       <SkillsList
+    //         skills={profile.skills}
+    //         isLoggedInUser={!profileId && true}
+    //       />
+    //     )}
+
+    //     <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
+    //       <SkillForm profileId={profile._id} />
+    //     </div>
+    //   </div>
   );
 };
 
