@@ -43,3 +43,17 @@ export const REMOVE_DRINK = gql`
     }
   }
 `;
+
+export const SAVE_DRINK = gql`
+  mutation saveDrink ($profileId:ID!, $drink:ID!) {
+    saveDrink (profileId: $profileId, drink: $drink){
+        name
+        drinks {
+          name
+          measure
+          ingredients
+          instructions
+        }
+     }
+  }
+`;

@@ -1,14 +1,16 @@
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery, useQuery, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { GET_DRINK_BY_INGREDIENT } from '../../utils/queries';
-import { Button } from 'react-bootstrap'
+import { GET_DRINK_BY_INGREDIENT, QUERY_ME } from '../../utils/queries';
+import { SAVE_DRINK } from '../../utils/mutations';
+import { Button } from 'react-bootstrap';
 import { saveDrink } from '../../utils/localStorage';
 
 const DrinkSearch = ({ drinks, title }) => {
   const [ingredient, setIngredient] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-
+  const { status, profile } = useQuery(QUERY_ME);
+  const [saveDrink, {d}] = useMutation(SAVE_DRINK);
   const [search, { loading, data }] = useLazyQuery(GET_DRINK_BY_INGREDIENT, {
     variables: { ingredient: searchTerm }
   })
@@ -282,7 +284,11 @@ const DrinkSearch = ({ drinks, title }) => {
                   </ul>
 
                   <Link
-                    onClick={() => saveDrink(drink._id)}
+                    onClick={ () => saveDrink({
+                      variables: {profileId: '611c4aee7cbd530e265d8114', 
+                        drink: '611c4aee7cbd530e265d811e'}
+                    })}
+
                     className="btn btn-block btn-squared btn-light text-dark"
                     to={`/me/${drink._id}`}
                   >
