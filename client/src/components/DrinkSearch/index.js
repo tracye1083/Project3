@@ -9,8 +9,9 @@ import { saveDrink } from '../../utils/localStorage';
 const DrinkSearch = ({ drinks, title }) => {
   const [ingredient, setIngredient] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const { status, profile } = useQuery(QUERY_ME);
-  const [saveDrink, {d}] = useMutation(SAVE_DRINK);
+  const [drinkIdData, setDrinkIdData] = useState([]);
+  const { loading: meLoading, data: meData } = useQuery(QUERY_ME);
+  const [saveDrink, { data: myDrinkData }] = useMutation(SAVE_DRINK);
   const [search, { loading, data }] = useLazyQuery(GET_DRINK_BY_INGREDIENT, {
     variables: { ingredient: searchTerm }
   })
@@ -23,6 +24,10 @@ const DrinkSearch = ({ drinks, title }) => {
     console.log('test123')
     console.log(drinkData)
     console.log('test456')
+    //drinkIdData = drinkIdData.concat(drinkData)
+    // setDrinkIdData([...drinkData])
+    console.log("drinkdata")
+    console.log(drinkIdData)
     for (let d = 0; d < drinkData.length; d++) {
       console.log('name: ' + drinkData[d].name)
       ingsAndMeas = []
@@ -37,7 +42,7 @@ const DrinkSearch = ({ drinks, title }) => {
           ingsAndMeas.push(drinkData[d].ingredients[i])
         }
       }
-      drinkData1.push({ "name": drinkData[d].name, "image": drinkData[d].image, "instructions": drinkData[d].instructions, "ingsAndMeas": ingsAndMeas })
+      drinkData1.push({ "id": drinkData[d]._id, "name": drinkData[d].name, "image": drinkData[d].image, "instructions": drinkData[d].instructions, "ingsAndMeas": ingsAndMeas })
       console.log(drinkData1)
 
     }
@@ -56,6 +61,8 @@ const DrinkSearch = ({ drinks, title }) => {
   console.log(drinkData1)
   console.log("test2")
 
+  console.log("meData: ", meData)
+  // console.log("meID: ", meData.me._id)
 
 
   const handleFormSubmit = async (event) => {
@@ -264,8 +271,8 @@ const DrinkSearch = ({ drinks, title }) => {
         <div className="flex-row justify-space-between my-4">
           {drinkData1 &&
             drinkData1.map((drink) => (
-              <div key={drink._id} className="col-12 col-xl-6">
-                <div className="card mb-3 bg-dark text-light">
+              <div key={drink.id} className="col-12 col-xl-6">
+                <div className="card mb-3 p-4 bg-dark text-light">
                   <h4 className="card-header bg-primary text-light p-2 m-0">
                     {drink.name} <br />
                     <span className="text-white" style={{ fontSize: '1rem' }}>
@@ -284,13 +291,15 @@ const DrinkSearch = ({ drinks, title }) => {
                   </ul>
 
                   <Link
-                    onClick={ () => saveDrink({
-                      variables: {profileId: '611c4aee7cbd530e265d8114', 
-                        drink: '611c4aee7cbd530e265d811e'}
+                    onClick={() => saveDrink({
+                      variables: {
+                        profileId: meData.me._id,
+                        drink: drink.id
+                      }
                     })}
 
                     className="btn btn-block btn-squared btn-light text-dark"
-                    to={`/me/${drink._id}`}
+                    to={`/me/${meData.me._id}`}
                   >
                     Save to Favorites
                   </Link>
