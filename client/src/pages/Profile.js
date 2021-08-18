@@ -12,11 +12,11 @@ import { QUERY_SINGLE_PROFILE, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const Profile = () => {
-  const lsDrinks = localStorage.getItem('saved_drinks')
-  // const getUserDrinks = lsDrinks.JSON.stringify();
-  console.log(lsDrinks);
+  // const lsDrinks = localStorage.getItem('saved_drinks')
+  // // const getUserDrinks = lsDrinks.JSON.stringify();
+  // console.log(lsDrinks);
 
-  let favName = lsDrinks.name;
+  // let favName = lsDrinks.name;
   // console.log(favName)
   // const { profileId } = useParams();
 

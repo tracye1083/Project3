@@ -43,9 +43,23 @@ body {
   animation-name: onLoad;
   animation-duration: 1s;
   margin: 0;
-  background-image: url('components/bg2.jpeg');
+  /* background-image: url('components/bg2.jpeg'); */
   background-position: center;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+}
+
+body::after {
+  content: "";
+  background: url('components/bg2.jpeg');
+  background-position: center;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; 
+  min-height: 100vh;
 }
 
 /**
@@ -71,38 +85,54 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   padding: 5px;
-  background-color: black;
+  background-color: transparent;
   border-radius: 10px !important;
 }
 
 select {
   margin-left: auto !important;
   margin-right: auto !important;
-  color: grey;
+  color: white;
+  background-color: black;
+  padding-left: 10px;
   border-radius: 5px !important;
+}
+
+input {
+  background-color: black !important;
+  color: white !important;
 }
 
 label {
   margin-left: auto !important;
   margin-right: auto !important;
   font-weight: 500;
-  color: ivory
+  color: ivory;
 }
 
-Button {
+.searchBtn {
   /* width: 7em;
   height: 3em;
   margin-left: auto !important;
   margin-right: auto !important;
   border-radius: 20%;
   background-color: rgb(2, 117, 216) !important; */
-  color: white;
+  background-color: green !important;
+  color: white !important;
   width: 10em;
   margin-left: auto !important;
   margin-right: auto !important;
   border: 2px solid black !important;
+}
+
+.logout {
+  background-color: red !important;
+}
+
+select {
+  margin-left: 2rem !important;
 }
 
 
@@ -439,9 +469,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
+  font-family: 'Poppins';
   font-size: 16px;
   color: #1a1a1a;
 }
