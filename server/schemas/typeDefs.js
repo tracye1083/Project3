@@ -6,7 +6,13 @@ const typeDefs = gql`
     name: String
     email: String
     password: String
-    skills: [String]!
+    drinks: [ID]!
+  }
+
+  type ProfileDrinks {
+    _id: ID
+    name: String
+    drinks: [Drink]
   }
 
   type Drink {
@@ -38,13 +44,12 @@ const typeDefs = gql`
     addProfile(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 
-    addSkill(profileId: ID!, skill: String!): Profile
+    saveDrink(profileId: ID!, drink: ID!): ProfileDrinks
     removeProfile: Profile
     removeSkill(skill: String!): Profile
+    
   }
 `;
-
-
 
 module.exports = typeDefs;
 

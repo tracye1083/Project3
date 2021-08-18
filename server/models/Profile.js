@@ -19,7 +19,7 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  savedDrinks: [
+  drinks: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Drink',

@@ -58,20 +58,20 @@ const resolvers = {
     },
 
     // Add a third argument to the resolver to access data in our `context`
-    addSkill: async (parent, { profileId, skill }, context) => {
+    saveDrink: async (parent, { profileId, drink }, context) => {
       // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
-      if (context.user) {
+      // if (context.user) {
         return Profile.findOneAndUpdate(
           { _id: profileId },
           {
-            $addToSet: { skills: skill },
+            $addToSet: { drinks: drink },
           },
           {
             new: true,
             runValidators: true,
           }
-        );
-      }
+        ).populate('drinks');
+      // }
       // If user attempts to execute this mutation and isn't logged in, throw an error
       throw new AuthenticationError('You need to be logged in!');
     },
