@@ -12,14 +12,7 @@ export const ADD_PROFILE = gql`
   }
 `;
 
-export const ADD_DRINK = gql`
-<<<<<<< Updated upstream
-  mutation addSkill($profileId: ID!, $skill: String!) {
-    addSkill(profileId: $profileId, skill: $skill) {
-      _id
-      name
-      skills
-=======
+export const ADD_DRINK = gql`    
   mutation addDrink($name: String!, $glass: String, $measure: [String], $ingredients: [String], $instructions: String) {
     addDrink(name: $name, glass: $glass, measure: $measure, ingredients: $ingredients, instructions: $instructions) {
         name
@@ -27,7 +20,6 @@ export const ADD_DRINK = gql`
         measure
         ingredients
         instructions
->>>>>>> Stashed changes
     }
   }
 `;
@@ -39,6 +31,7 @@ export const LOGIN_USER = gql`
       profile {
         _id
         name
+        drinks
       }
     }
   }

@@ -40,6 +40,12 @@ const resolvers = {
 
       return { token, profile };
     },
+
+    addDrink: async (parent, args) => {
+      const drink = await Drink.create(args);
+      return drink;
+    },
+
     login: async (parent, { email, password }) => {
       const profile = await Profile.findOne({ email });
 
@@ -54,6 +60,8 @@ const resolvers = {
       }
 
       const token = signToken(profile);
+      console.log("Token:", token)
+      console.log("Profile: ", profile)
       return { token, profile };
     },
 
