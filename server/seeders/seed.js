@@ -3,6 +3,14 @@ const { Profile, Drink } = require('../models');
 const profileSeeds = require('./profileSeeds.json');
 const drinkSeeds = require('./cocktails.json');
 
+// const dataLC = drinkSeeds.map((drink) => {
+//     drink.ingredients.forEach((ingredient) => {
+//         let ingredientLC = ingredient.toLowerCase();
+//         console.log(ingredientLC)
+//     })
+// })
+
+// console.log(dataLC)
 
 
 // const dataCopy = drinkSeeds.map((drink) => {
@@ -22,7 +30,6 @@ db.once('open', async () => {
         await Drink.deleteMany({});
         await Drink.create(drinkSeeds);
         console.log('Drink database seeded');
-
         process.exit(0);
     } catch (err) {
         throw err;
