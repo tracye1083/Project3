@@ -48,24 +48,24 @@ const Profile = () => {
   // }
 
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (!profile._id) {
-    return (
-      <h4>
-        You need to be logged in to see your profile page. Use the navigation
-        links above to sign up or log in!
-      </h4>
-    );
-  }
+  // if (!profile._id) {
+  //   return (
+  //     <h4>
+  //       You need to be logged in to see your profile page. Use the navigation
+  //       links above to sign up or log in!
+  //     </h4>
+  //   );
+  // }
 
   return (
 
     <Container>
       <h1 className='userPageText' >Your saved drinks:  </h1>
-      <h2>{profile._id}</h2>
+ 
     </Container>
 
 
