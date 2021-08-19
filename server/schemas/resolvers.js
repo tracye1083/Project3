@@ -14,7 +14,8 @@ const resolvers = {
 
     favDrinks: async (parent, { profileId }) => {
       //Finds all drinks with an id from the array of ids
-      return await Profile.find({ _id: profileId }).populate('drinks');
+      console.log(profileId)
+      return await Profile.findOne({ _id: profileId }).populate('drinks');
     },
 
     profile: async (parent, args) => {
