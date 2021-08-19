@@ -12,6 +12,7 @@ const Profile = () => {
   const { loading: drinkLoading, data: drinkData } = useQuery(QUERY_SINGLE_PROFILE, {
     variables: { profileId: profile._id}
   })
+
   const drinkData1 = drinkData?.profile || []
   console.log(profile)
   console.log(profile._id)
