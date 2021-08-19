@@ -12,14 +12,19 @@ const resolvers = {
       return await Drink.find({});
     },
 
-    favDrinks: async (parent, { ids }) => {
+    favDrinks: async (parent, { profileId }) => {
       //Finds all drinks with an id from the array of ids
-      return await Drink.find({ _id: { $in: ids } });
+      return await Profile.find({ _id: profileId }).populate('drinks');
     },
 
-    profile: async (parent, { profileId }) => {
-      return await Profile.findOne({ _id: profileId });
+    profile: async (parent, args) => {
+      return await Profile.findOne({ _id: profileId }).populate('drinks');
     },
+
+    // drinkById: async (parent, args) => {
+    //   return await Drink.find({ _id })
+    // },
+
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {

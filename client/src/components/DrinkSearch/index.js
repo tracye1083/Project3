@@ -1,13 +1,11 @@
 import { useLazyQuery } from '@apollo/client';
 import React, { useState } from 'react';
-import { GET_DRINK_BY_INGREDIENT, QUERY_ME } from '../../utils/queries';
+import { GET_DRINK_BY_INGREDIENT } from '../../utils/queries';
 import Results from '../Results/index.js'
 
 const DrinkSearch = ({ drinks, title }) => {
   const [ingredient, setIngredient] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const [drinkIdData, setDrinkIdData] = useState([]);
-  
 
   const [search, { loading, data }] = useLazyQuery(GET_DRINK_BY_INGREDIENT, {
     variables: { ingredient: searchTerm }
