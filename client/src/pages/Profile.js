@@ -20,7 +20,6 @@ const Profile = () => {
   // console.log(favName)
   // const { profileId } = useParams();
 
-<<<<<<< Updated upstream
   // // If there is no `profileId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
   // const { loading, data } = useQuery(
   //   profileId ? QUERY_SINGLE_PROFILE : QUERY_ME,
@@ -49,32 +48,6 @@ const Profile = () => {
   //     </h4>
   //   );
   // }
-=======
-  // If there is no `profileId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
-  const { loading, data } = useQuery(QUERY_ME)
-
-  // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_PROFILE` query
-  const profile = data?.me || {};
-
-  
-  // Use React Router's `<Redirect />` component to redirect to personal profile page if username is yours
-  // if (Auth.loggedIn() && Auth.getProfile().data._id === profileId) {
-  //   return <Redirect to="/profile" />;
-  // }
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!profile._id) {
-    return (
-      <h4>
-        You need to be logged in to see your profile page. Use the navigation
-        links above to sign up or log in!
-      </h4>
-    );
-  }
->>>>>>> Stashed changes
 
   return (
 
