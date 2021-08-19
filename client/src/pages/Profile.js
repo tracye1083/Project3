@@ -1,19 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
-
+import { useLazyQuery } from '@apollo/client';
+import Auth from '../utils/auth';
+import { Jumbotron, CardColumns, Card, Button } from 'react-bootstrap';
+//import { removeDrinkId } from '../utils/localStorage';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { REMOVE_DRINK } from '../utils/mutations';
+import { QUERY_PROFILES } from '../utils/queries';
 
 import { Redirect, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-
-import SkillsList from '../components/SkillsList';
-import SkillForm from '../components/SkillForm';
 
 import { QUERY_ME } from '../utils/queries';
 
-import Auth from '../utils/auth';
 
-const Profile = () => {
+const ProfileSearch = ({ profiles, title }) => {
+  const [searchId, setSearchId] = useState('');
 
+  const [search, { loading, data }] = useLazyQuery(QUERY_PROFILES, {
+    variables: { profileId: searchId }
+  })
+
+  const findProfile = async () => {
+    setSearchId(searchId)
+    search();
+  }
+  // findProfile()
+  // const [search, { loading, data }] = useLazyQuery(QUERY_SINGLE_PROFILE, {
+  //   variables: { profileId: searchTerm }
+  // })
+  const profileData = data?.drinkByIngredient || [];
+
+  console.log("prof: ", profileData)
+
+  //NOt suree what to use below here
   // const { profileId } = useParams();
 
   // // If there is no `profileId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
@@ -70,4 +89,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileSearch;
