@@ -43,16 +43,19 @@ body {
   animation-name: onLoad;
   animation-duration: 1s;
   margin: 0;
-  /* background-image: url('components/bg2.jpeg'); */
+  background-image: url('components/bg2.jpeg');
   background-position: center;
-  /* background-color: #ffffff; */
+  background-repeat: repeat;
+  background-color: #ffffff;
 }
+
+/* THIS IS WHERE I TRIED TO MAKE JUST THE BG IMG OPAQUE BUT IT WOULD NOT REPEAT THE BG IMG ON SCROLLING PAST 100vh.
 
 body::after {
   content: "";
-  background: url('components/bg2.jpeg');
-  background-position: center;
-  opacity: 0.1;
+  background-image: url('components/bg2.jpeg');
+  background-repeat: repeat;
+  opacity: .2;
   top: 0;
   left: 0;
   bottom: 0;
@@ -60,7 +63,7 @@ body::after {
   position: absolute;
   z-index: -1; 
   min-height: 100vh;
-}
+} */
 
 /**
  * Render the `main` element consistently in IE.

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useLazyQuery } from '@apollo/client';
 import Auth from '../utils/auth';
-import { Jumbotron, CardColumns, Card, Button } from 'react-bootstrap';
+// import { Jumbotron, CardColumns, Card, Button } from 'react-bootstrap';
 //import { removeDrinkId } from '../utils/localStorage';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { REMOVE_DRINK } from '../utils/mutations';
@@ -29,7 +29,7 @@ const ProfileSearch = ({ profiles, title }) => {
   //   variables: { profileId: searchTerm }
   // })
   const profileData = data?.drinkByIngredient || [];
-
+  
   console.log("prof: ", profileData)
 
   //NOt suree what to use below here
