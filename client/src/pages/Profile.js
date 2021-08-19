@@ -64,7 +64,6 @@ const Profile = () => {
 
     <Container>
       <h1 className='userPageText' >Your saved drinks:  </h1>
-      
     </Container>
 
 
