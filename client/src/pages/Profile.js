@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 
-import { QUERY_ME, QUERY_SINGLE_PROFILE} from '../utils/queries';
+import { QUERY_ME, GET_FAV_DRINKS} from '../utils/queries';
 
 import { useQuery } from '@apollo/client';
 
@@ -10,7 +10,7 @@ const Profile = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const profile = data?.me || {}
 
-  const { loading: drinkLoading, data: drinkData } = useQuery(QUERY_SINGLE_PROFILE, {
+  const { loading: drinkLoading, data: drinkData } = useQuery(GET_FAV_DRINKS, {
     variables: { profileId: profile._id}
   })
 
