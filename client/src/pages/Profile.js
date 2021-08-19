@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from 'react-bootstrap';
 
 import { QUERY_ME, QUERY_SINGLE_PROFILE} from '../utils/queries';
 
@@ -19,9 +20,23 @@ const Profile = () => {
   console.log(drinkData1);
 
   return (
+    <>
+    <h1 style={{color: 'green', backgroundColor: 'lightgrey', textAlign: 'center' }}>Hello {profile.name}!</h1>
+    
+    <Card border="primary" style={{ width: '18rem' }}>
+    <Card.Header>{profile.drinks}</Card.Header>
+    <Card.Body style={{ backgroundColor: 'white'}}>
+      <Card.Title>{profile.name}</Card.Title>
+      <Card.Text>
+        Ingredients
+      </Card.Text>
+      <Card.Text>
+        Measure
+      </Card.Text>
+    </Card.Body>
+    </Card>
 
-    <h1>Hello {profile.name}</h1>
-
+    </>
   )
 };
 
