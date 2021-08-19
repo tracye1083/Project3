@@ -1,23 +1,19 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
+
 import { Redirect, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import SkillsList from '../components/SkillsList';
 import SkillForm from '../components/SkillForm';
 
-import { QUERY_SINGLE_PROFILE, QUERY_ME } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
 const Profile = () => {
-  // const lsDrinks = localStorage.getItem('saved_drinks')
-  // // const getUserDrinks = lsDrinks.JSON.stringify();
-  // console.log(lsDrinks);
 
-  // let favName = lsDrinks.name;
-  // console.log(favName)
   // const { profileId } = useParams();
 
   // // If there is no `profileId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
@@ -48,30 +44,30 @@ const Profile = () => {
   //     </h4>
   //   );
   // }
+  // }
+
+
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  // if (!profile._id) {
+  //   return (
+  //     <h4>
+  //       You need to be logged in to see your profile page. Use the navigation
+  //       links above to sign up or log in!
+  //     </h4>
+  //   );
+  // }
 
   return (
 
     <Container>
       <h1 className='userPageText' >Your saved drinks:  </h1>
+      
     </Container>
 
-    //   <div>
-    //     <h2 className="card-header">
-    //       {profileId ? `${profile.name}'s` : 'Your'} friends have endorsed these
-    //       skills...
-    //     </h2>
 
-    //     {profile.skills?.length > 0 && (
-    //       <SkillsList
-    //         skills={profile.skills}
-    //         isLoggedInUser={!profileId && true}
-    //       />
-    //     )}
-
-    //     <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-    //       <SkillForm profileId={profile._id} />
-    //     </div>
-    //   </div>
   );
 };
 
