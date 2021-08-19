@@ -23,8 +23,8 @@ export const GET_DRINKS = gql`
 `;
 
 export const GET_FAV_DRINKS = gql`
-    query favDrinks($id: [ID]) {
-        favDrinks(ids: $id) {
+    query favDrinks($profileId: ID!) {
+        favDrinks(profileId: $profileId) {
             _id
             name
             ingredients
